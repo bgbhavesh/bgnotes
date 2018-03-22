@@ -30,7 +30,7 @@ function Item(props) {
             
                     <span 
                         className='carbon-wrap'
-                        onClick={e => props.deleteItem(e,props.w._id)}>
+                        onClick={e => props.deleteItem(e,props.w.uid)}>
                             x
                     </span><br/>
             {stringTruncat(props.w.description,25)}

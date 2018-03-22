@@ -1,6 +1,6 @@
 // import Widgets from '../../api/widgets';
 import axios from 'axios';
-const serverUrl = 'https://widgetserver.herokuapp.com';
+const serverUrl = 'http://localhost:3001';//'https://widgetserver.herokuapp.com';
 const apiUrl = serverUrl+"/api/widgets";
 
 function getWidgets() {
@@ -28,7 +28,7 @@ function getWidgets() {
 }
 function updateWidget(data) {
   console.log('data=',data)
-  if(data && data._id){
+  if(data && data.uid){
     return async function(dispatch) {
     axios({
       method:'post',
@@ -79,7 +79,7 @@ function deleteWidget(_id) {
     axios({
       method:'post',
       url:apiUrl+"/deleteWidget",
-      data:{id:_id}
+      data:{uid:_id}
     })
     .then(function (response) {
       console.log(response.data)

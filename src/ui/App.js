@@ -22,13 +22,13 @@ class App extends React.Component {
         e.preventDefault();
         this.refs.name.value = item.name;
         this.refs.description.value = item.description;
-        this.refs._id.value = item._id;
+        this.refs.uid.value = item.uid;
     }
     clearForm(){
 
         this.refs.name.value = '';
         this.refs.description.value = '';
-        this.refs._id.value = '';
+        this.refs.uid.value = '';
     }
     handleForm(e) {
         e.preventDefault();
@@ -36,9 +36,9 @@ class App extends React.Component {
         let data={};
         data.name = this.refs.name.value.trim();
         data.description = this.refs.description.value.trim();
-        const _id = this.refs._id.value;
-        if(_id) {
-            data._id = _id;
+        const uid = this.refs.uid.value;
+        if(uid) {
+            data.uid = uid;
             widgetActions.updateWidget(data);
         }else{
             widgetActions.createWidget(data);    
@@ -75,8 +75,8 @@ class App extends React.Component {
                                 </div>
                                 <div className="form-group">
                                     
-                                <input type="hidden" className="form-control"  ref="_id"
-                                           placeholder="_id" />
+                                <input type="hidden" className="form-control"  ref="uid"
+                                           placeholder="uid" />
 
                                 </div>
 
