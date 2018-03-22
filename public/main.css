@@ -1,0 +1,42 @@
+/* CSS declarations go here */
+html,body,#root{
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+[data-reactroot]{
+    height: 100%;
+}
+.main-container{
+    height: 100%;
+}
+.main-content{
+    display: flex;
+    height: 100%;
+}
+.action-btn{
+    text-align: right;
+}
+.left-content{
+flex: 0.3;
+background:#ccc;
+}
+.left-content ul{
+    margin: 0;
+    padding: 0;
+}
+.left-content ul li{
+    list-style: none;
+    padding: 8px;
+    border-bottom: 1px solid;
+}
+.left-content ul li span{
+    float: right;
+    font-size: 18px;
+    padding: 2px 8px;
+}
+.right-content{
+    flex:1 1 auto;
+    overflow-y: auto;
+}
