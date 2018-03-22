@@ -1,42 +1,31 @@
-/* CSS declarations go here */
-html,body,#root{
-    height: 100%;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+.row.content {height: 100%}
+    
+    /* Set gray background color and 100% height */
+.sidenav {
+  border: none;
+  border-right: 1px solid #f1f1f1;
+  height: 100%;
+  padding: 0px !important
 }
-[data-reactroot]{
-    height: 100%;
+.listItem{
+    border-bottom: 1px solid #f1f1f1;
 }
-.main-container{
-    height: 100%;
+.pad15h{
+    padding-left : 15px !important;
+    padding-right : 15px !important
 }
-.main-content{
-    display: flex;
-    height: 100%;
+/* Set black background color, white text and some padding */
+header {
+  background-color: #f1f1f1;
+  color: black;
+  padding: 15px;
 }
-.action-btn{
-    text-align: right;
-}
-.left-content{
-flex: 0.3;
-background:#ccc;
-}
-.left-content ul{
-    margin: 0;
-    padding: 0;
-}
-.left-content ul li{
-    list-style: none;
-    padding: 8px;
-    border-bottom: 1px solid;
-}
-.left-content ul li span{
-    float: right;
-    font-size: 18px;
-    padding: 2px 8px;
-}
-.right-content{
-    flex:1 1 auto;
-    overflow-y: auto;
-}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+/*@media screen and (max-width: 767px) {*/
+  /*.sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height: auto;} */
+/*}*/

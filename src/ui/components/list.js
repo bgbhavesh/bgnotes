@@ -9,31 +9,28 @@ export default class List extends Component{
         let { widgets } = this.props;
         console.log(this.props)
         return(
-            <ul>
+            <div c>
                 {widgets
                     ?
                     widgets.map((w,i) => 
                         <Item  w={w} key={i} {...this.props}/>                    
                     )
                     :
-                    <li>none</li>
+                    <div>none</div>
                 }
-            </ul>
+            </div>
         );
     }
 }
 function Item(props) {
     return (
-        <li 
-            onClick={e => props.selectItem(e,props.w)}>
-            {stringTruncat(props.w.name,20)}
-            
-                    <span 
-                        className='carbon-wrap'
-                        onClick={e => props.deleteItem(e,props.w.uid)}>
-                            x
-                    </span><br/>
+        <div className='listItem pad15h' onClick={e => props.selectItem(e,props.w)}>
+            <a href="#" 
+                className="close" 
+                
+                aria-label="close" onClick={e => props.deleteItem(e,props.w.uid)}>×</a>
+                    <p><strong>{stringTruncat(props.w.name,20)}</strong></p>
             {stringTruncat(props.w.description,25)}
-        </li>
+        </div>
     )
 }

@@ -58,21 +58,24 @@ class App extends React.Component {
         const {widgets} = this.props;
 
         return (
-            <div>
-                <div className="main-container">
+            <div className=''>
+            <header className="container-fluid">
+              <p>Notes</p>
+            </header>
+                <div className="container-fluid">
 
-                    <div className="main-content">
+                    <div className="row content">
 
-                        <div className="left-content">
+                        <div className="col-sm-3 col-lg-3 col-xs-3 sidenav">
                             <List  widgets={widgets} selectItem={this.selectItem} deleteItem={this.deleteItem}/>
                         </div>
-                        <div className="right-content">
+                        <div className="col-sm-9 col-lg-9 col-xs-9">
 
-                            <form role="form" onSubmit={this.handleForm.bind(this)}>
-                                <h3>Notes</h3>
-                                <div className="action-btn">
-                                    <input type="button" value="Clear" onClick={this.clearForm.bind(this)}/>
-                                </div>
+                            <form role="form" onSubmit={this.handleForm.bind(this)}>      
+                                <button type="button"   className="pull-right btn btn-default" onClick={this.clearForm.bind(this)}>
+                                    Clear
+                                </button>                          
+                                
                                 <div className="form-group">
                                     
                                 <input type="hidden" className="form-control"  ref="uid"
