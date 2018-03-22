@@ -39,9 +39,9 @@ class App extends React.Component {
         const _id = this.refs._id.value;
         if(_id) {
             data._id = _id;
-            this.props.widgetActions.updateWidget(data);
+            widgetActions.updateWidget(data);
         }else{
-            this.props.widgetActions.createWidget(data);    
+            widgetActions.createWidget(data);    
         }
         
         this.clearForm();
@@ -55,7 +55,7 @@ class App extends React.Component {
     }
 
     render() {
-        const {widgets, widgetActions} = this.props;
+        const {widgets} = this.props;
 
         return (
             <div>

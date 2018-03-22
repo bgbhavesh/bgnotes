@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
 import {stringTruncat} from '../../globalFunction';
 export default class List extends Component{
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     render(){
         let { widgets } = this.props;

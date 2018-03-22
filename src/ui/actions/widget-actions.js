@@ -1,4 +1,4 @@
-import Widgets from '../../api/widgets';
+// import Widgets from '../../api/widgets';
 import axios from 'axios';
 const apiUrl = "http://localhost:3001/api/widgets";
 
