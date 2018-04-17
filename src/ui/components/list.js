@@ -7,9 +7,9 @@ export default class List extends Component{
 
     render(){
         let { widgets } = this.props;
-        console.log(this.props)
+        // console.log('List')
         return(
-            <div c>
+            <div >
                 {widgets
                     ?
                     widgets.map((w,i) => 

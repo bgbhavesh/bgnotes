@@ -8,7 +8,7 @@ function getWidgets() {
   return async function(dispatch) {
     axios.get(apiUrl)
     .then(function (response) {
-      console.log(response.data)
+      // console.log(response.data)
       return dispatch({
         type: 'GET_WIDGETS',
         payload: response.data
@@ -17,13 +17,6 @@ function getWidgets() {
     .catch(function (error) {
       console.log(error);
     });
-
-    // const widgets = await fetch(apiUrl);
-    // console.log(widgets)
-    // return dispatch({
-    //   type: 'GET_WIDGETS',
-    //   payload: widgets
-    // });
   }
 }
 function updateWidget(data) {
@@ -51,7 +44,7 @@ function updateWidget(data) {
 }
 
 function createWidget(data) {
-  // console.log('data=',data)
+  console.log('data=',data)
   if(data ){
   return async function(dispatch) {
     axios({
@@ -93,10 +86,32 @@ function deleteWidget(_id) {
     });
   }
 }
-
+function searchWidgets(searchText) {
+  if(searchText){
+    return async function(dispatch) {
+      axios({
+        method:'post',
+        url:apiUrl+'/searchWidget',
+        data:{searchText:searchText}
+      })
+      .then(function (response) {
+        // console.log(response.data)
+        return dispatch({
+          type: 'GET_WIDGETS',
+          payload: response.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
+  
+}
 export default {
   createWidget,
   getWidgets,
   deleteWidget,
-  updateWidget
+  updateWidget,
+  searchWidgets
 }

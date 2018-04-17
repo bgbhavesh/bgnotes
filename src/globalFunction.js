@@ -1,5 +1,5 @@
 const stringTruncat =(str,size)=>{
-    if(str.length>=size){
+    if(str && str.length>=size){
         return str.substring(0,size)+'...';
     }
     else return str;
