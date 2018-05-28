@@ -1,99 +1,15 @@
 // import Widgets from '../../api/widgets';
 import axios from 'axios';
 const serverUrl = 'https://widgetserver.herokuapp.com';//'https://widgetserver.herokuapp.com';
-const apiUrl = serverUrl+"/api/widgets";
+const apiUrl = serverUrl + "/api/common";
 
 function getWidgets() {
 
-  return async function(dispatch) {
-    axios.get(apiUrl)
-    .then(function (response) {
-      // console.log(response.data)
-      return dispatch({
-        type: 'GET_WIDGETS',
-        payload: response.data
-      });
+  return async function (dispatch) {
+    axios.get({
+      url: apiUrl,
+      model: 'widgets'
     })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-}
-function updateWidget(data) {
-  console.log('data=',data)
-  if(data && data.uid){
-    return async function(dispatch) {
-    axios({
-      method:'post',
-      url:apiUrl+"/updateWidget",
-      data:data
-    })
-      .then(function (response) {
-        console.log(response.data)
-        return dispatch({
-          type: 'UPDATE_WIDGET',
-          payload: response.data
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }  
-  }
-  
-}
-
-function createWidget(data) {
-  console.log('data=',data)
-  if(data ){
-  return async function(dispatch) {
-    axios({
-      method:'post',
-      url:apiUrl,
-      data:data
-    })
-      .then(function (response) {
-        console.log(response.data)
-        return dispatch({
-          type: 'CREATE_WIDGET',
-          payload: response.data
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }
-  }
-}
-
-function deleteWidget(_id) {
-  console.log(_id,apiUrl+"/deleteWidget")
-  return async function(dispatch) {    
-    axios({
-      method:'post',
-      url:apiUrl+"/deleteWidget",
-      data:{uid:_id}
-    })
-    .then(function (response) {
-      console.log(response.data)
-      return dispatch({
-        type: 'REMOVE_WIDGETS',
-        payload: response.data
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-}
-function searchWidgets(searchText) {
-  if(searchText){
-    return async function(dispatch) {
-      axios({
-        method:'post',
-        url:apiUrl+'/searchWidget',
-        data:{searchText:searchText}
-      })
       .then(function (response) {
         // console.log(response.data)
         return dispatch({
@@ -104,9 +20,104 @@ function searchWidgets(searchText) {
       .catch(function (error) {
         console.log(error);
       });
+  }
+}
+function updateWidget(data) {
+  console.log('data=', data)
+  if (data && data.uid) {
+    return async function (dispatch) {
+      axios({
+        method: 'post',
+        url: apiUrl + "/update",
+        data: data,
+        model: 'widgets'
+      })
+        .then(function (response) {
+          console.log(response.data)
+          return dispatch({
+            type: 'UPDATE_WIDGET',
+            payload: response.data
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
-  
+
+}
+
+function createWidget(data) {
+  console.log('data=', data)
+  if (data) {
+    return async function (dispatch) {
+      axios({
+        method: 'post',
+        url: apiUrl,
+        data: data,
+        model: 'widgets'
+      })
+        .then(function (response) {
+          console.log(response.data)
+          return dispatch({
+            type: 'CREATE_WIDGET',
+            payload: response.data
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+}
+
+function deleteWidget(_id) {
+  console.log(_id, apiUrl + "/delete")
+  return async function (dispatch) {
+    axios({
+      method: 'post',
+      url: apiUrl + "/delete",
+      data: {
+        uid: _id,
+        model: 'widgets'
+      }
+    })
+      .then(function (response) {
+        console.log(response.data)
+        return dispatch({
+          type: 'REMOVE_WIDGETS',
+          payload: response.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+}
+function searchWidgets(searchText) {
+  if (searchText) {
+    return async function (dispatch) {
+      axios({
+        method: 'post',
+        url: apiUrl + '/search',
+        data: {
+          searchText: searchText
+        },
+        model: 'widgets'
+      })
+        .then(function (response) {
+          // console.log(response.data)
+          return dispatch({
+            type: 'GET_WIDGETS',
+            payload: response.data
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+
 }
 export default {
   createWidget,
