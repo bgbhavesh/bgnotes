@@ -1,6 +1,6 @@
 // import Widgets from '../../api/widgets';
 import axios from 'axios';
-const serverUrl = 'http://localhost:3001'//'https://widgetserver.herokuapp.com';//'https://widgetserver.herokuapp.com';
+const serverUrl = 'https://widgetserver.herokuapp.com';//'http://localhost:3001';
 const apiUrl = serverUrl + "/api/common";
 
 function getWidgets() {
