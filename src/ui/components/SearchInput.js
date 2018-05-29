@@ -1,31 +1,31 @@
-import React,{Component} from 'react';
-export default class SearchInput extends Component{
+import React, { Component } from 'react';
+export default class SearchInput extends Component {
     // constructor(props){
     //     super(props);
     // }
 
-    render(){
+    render() {
         // console.log('SearchInput')
-        return(
+        return (
             <div >
                 <form >
                     <div className="form-group pad15h">
                         <label htmlFor="Title">Search</label>
-                        <input type="text" className="form-control"  ref="Search"
-                            placeholder="Search" 
+                        <input type="text" className="form-control" ref="Search"
+                            placeholder="Search"
                             onKeyUp={e => {
                                 var text = e.target.value.trim();
-                                if(text && text!=''){
-                                    this.props.searchItems(e,text)
+                                if (text && text !== '') {
+                                    this.props.searchItems(e, text)
                                 }
-                                else{
+                                else {
                                     this.props.getAllData();
                                 }
                             }}
                         />
 
                     </div>
-              </form>
+                </form>
             </div>
         );
     }

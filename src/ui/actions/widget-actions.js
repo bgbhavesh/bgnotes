@@ -1,14 +1,17 @@
 // import Widgets from '../../api/widgets';
 import axios from 'axios';
-const serverUrl = 'https://widgetserver.herokuapp.com';//'https://widgetserver.herokuapp.com';
+const serverUrl = 'http://localhost:3001'//'https://widgetserver.herokuapp.com';//'https://widgetserver.herokuapp.com';
 const apiUrl = serverUrl + "/api/common";
 
 function getWidgets() {
 
   return async function (dispatch) {
-    axios.get({
+    axios({
+      method: "post",
       url: apiUrl,
-      model: 'widgets'
+      data: {
+        model: 'widgets'
+      }
     })
       .then(function (response) {
         // console.log(response.data)
@@ -29,8 +32,10 @@ function updateWidget(data) {
       axios({
         method: 'post',
         url: apiUrl + "/update",
-        data: data,
-        model: 'widgets'
+        data: {
+          item: data,
+          model: 'widgets'
+        }
       })
         .then(function (response) {
           console.log(response.data)
@@ -53,9 +58,11 @@ function createWidget(data) {
     return async function (dispatch) {
       axios({
         method: 'post',
-        url: apiUrl,
-        data: data,
-        model: 'widgets'
+        url: apiUrl + "/add",
+        data: {
+          item: data,
+          model: 'widgets'
+        }
       })
         .then(function (response) {
           console.log(response.data)
@@ -101,9 +108,9 @@ function searchWidgets(searchText) {
         method: 'post',
         url: apiUrl + '/search',
         data: {
-          searchText: searchText
-        },
-        model: 'widgets'
+          searchText: searchText,
+          model: 'widgets'
+        }
       })
         .then(function (response) {
           // console.log(response.data)
