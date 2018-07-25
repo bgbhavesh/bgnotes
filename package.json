@@ -1,5 +1,5 @@
 {
-  "name": "todos",
+  "name": "LeoQuip",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
@@ -10,11 +10,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "prop-types": "^15.5.10",
-    "react": "^15.5.0",
-    "react-dom": "^15.5.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
     "react-id-swiper": "^1.6.6",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.3.1",
+    "reactstrap": "^6.3.0",
     "redux": "^3.5.2",
     "redux-thunk": "^2.2.0"
   },

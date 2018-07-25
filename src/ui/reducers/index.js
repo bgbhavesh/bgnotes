@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux'
-import widgets from './widgets'
+import { combineReducers } from 'redux';
+import widgets from './widgets';
+import products from './products';
 
 const appReducer = combineReducers({
-  widgets
+  widgets,
+  products
 });
 
 export default appReducer
