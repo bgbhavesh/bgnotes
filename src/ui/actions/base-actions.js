@@ -1,10 +1,18 @@
 import axios from 'axios';
 import config from '../../../src/config';
-const apiUrl = serverUrl + "/api/common";
+import _ from 'underscore';
+const apiUrl = config.serverUrl + "";
 const PAGE_LIMIT = 10;
 
-apiCall = function () {
-  apiCallClass = function (options) {
+var apiCall = function (requestedModel) {
+  var PAGE_LIMIT = PAGE_LIMIT;
+  var SKIP_START = 0;
+  var data = {};
+  var otherOptions = {};
+  var model = requestedModel || "widget";
+  var redux = "WIDGET";
+  var company = "";
+  var apiCallClass = function (options) {
     this.options = _.extend({}, options);
     this.data = this.options.data || {};
     this.redux = this.model.toUpperCase();
@@ -36,35 +44,36 @@ apiCall = function () {
     }
   };
   apiCallClass.prototype.getItems = function () {
-    return async function (dispatch) {
-      axios({
-        method: "post",
-        url: apiUrl,
-        data: {
-          model: this.model//widgets
-        }
-      })
-        .then(function (response) {
-          // console.log(response.data)
-          return dispatch({
-            type: 'GET_' + this.redux,
-            payload: response.data
-          });
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+    console.log("getItems")
+    // return async function (dispatch) {
+    //   axios({
+    //     method: "post",
+    //     url: apiUrl,
+    //     data: {
+    //       model: this.model//widgets
+    //     }
+    //   })
+    //     .then(function (response) {
+    //       // console.log(response.data)
+    //       return dispatch({
+    //         type: 'GET_' + this.redux,
+    //         payload: response.data
+    //       });
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+    // }
   };
   apiCallClass.prototype.updateItems = function () {
-    console.log('data=', data)
-    if (data && data.uid) {
+    console.log('data=', this.data)
+    if (this.data && this.data.uid) {
       return async function (dispatch) {
         axios({
           method: 'post',
           url: apiUrl + "/update",
           data: {
-            item: data,
+            item: this.data,
             model: this.model//widgets
           }
         })
@@ -82,13 +91,13 @@ apiCall = function () {
     }
   };
   apiCallClass.prototype.removeItems = function () {
-    console.log(_id, apiUrl + "/delete")
+    console.log(this.data._id, apiUrl + "/delete")
     return async function (dispatch) {
       axios({
         method: 'post',
         url: apiUrl + "/delete",
         data: {
-          uid: _id,
+          uid: this.data._id,
           model: this.model//widgets
         }
       })
@@ -105,13 +114,13 @@ apiCall = function () {
     }
   };
   apiCallClass.prototype.searchItems = function () {
-    if (searchText) {
+    if (this.data.searchText) {
       return async function (dispatch) {
         axios({
           method: 'post',
           url: apiUrl + '/search',
           data: {
-            searchText: searchText,
+            searchText: this.data.searchText,
             model: this.model//widgets
           }
         })
@@ -150,6 +159,7 @@ apiCall = function () {
     }
   };
   apiCallClass.prototype.getMoreItems = function () {
+
     return async function (dispatch) {
       axios({
         method: "post",
