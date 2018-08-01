@@ -1,21 +1,22 @@
 import axios from 'axios';
 import config from '../../../src/config';
 import _ from 'underscore';
-const apiUrl = config.serverUrl + "";
-const PAGE_LIMIT = 10;
+const apiUrl = config.serverUrl + "/api/common";
 
 var apiCall = function () {
-  var PAGE_LIMIT = PAGE_LIMIT;
-  var SKIP_START = 0;
   var data = {};
   var otherOptions = {};
-  var model = "widget";
-  var redux = "WIDGET";
-  var company = "";
+  var model = "widgets";
+  var redux = "WIDGETS";// might never be used
   var apiCallClass = function (options) {
-    this.options = _.extend({}, options);
-    this.data = this.options.data || {};
-    this.redux = this.model.toUpperCase();
+    // this.options = _.extend({}, options);
+    this.data = options.data || data;
+    this.model = options.model || model;
+    this.redux = options.redux || this.model.toUpperCase() || redux;
+    this.PAGE_LIMIT = config.PAGE_LIMIT || 9;
+    this.SKIP_START = 0;
+    this.company = "";
+    this.otherOptions = options.otherOptions || otherOptions;
   };
 
   apiCallClass.prototype.createItems = function () {
@@ -45,25 +46,28 @@ var apiCall = function () {
   };
   apiCallClass.prototype.getItems = function () {
     console.log("getItems")
-    // return async function (dispatch) {
-    //   axios({
-    //     method: "post",
-    //     url: apiUrl,
-    //     data: {
-    //       model: this.model//widgets
-    //     }
-    //   })
-    //     .then(function (response) {
-    //       // console.log(response.data)
-    //       return dispatch({
-    //         type: 'GET_' + this.redux,
-    //         payload: response.data
-    //       });
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-    // }
+    return async function (dispatch) {
+      axios({
+        method: "post",
+        url: apiUrl,
+        data: {
+          model: this.model//widgets
+        }
+      })
+        .then(function (response) {
+          // console.log(response.data)
+          return dispatch({
+            type: 'GET_' + this.redux,
+            payload: response.data
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  };
+  apiCallClass.prototype.getItemDetails = function () {
+
   };
   apiCallClass.prototype.updateItems = function () {
     console.log('data=', this.data)
@@ -185,6 +189,4 @@ var apiCall = function () {
 
 
 
-export default {
-  apiCall
-}
+export default apiCall;

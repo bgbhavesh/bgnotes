@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 import widgetActionCreators from './actions/widget-actions';
 import List from './components/list';
 import SearchInput from './components/SearchInput';
-import { apiCall } from "../ui/actions/base-actions"
+import apiCall from "../ui/actions/base-actions"
 
 var widgetApi;
 class Test extends React.Component {
     constructor(props) {
         super(props);
-        widgetApi = new apiCall();
+        widgetApi = new apiCall({ model: "widgets" });
+        console.log(widgetApi)
     }
     componentWillMount() {
 
@@ -19,7 +20,8 @@ class Test extends React.Component {
 
     componentDidMount() {
         const { widgetActions } = this.props;
-        widgetApi.getItems();
+        var x = widgetApi.getItems();
+        console.log(x)
         // widgetActions.getWidgets();
     }
 
