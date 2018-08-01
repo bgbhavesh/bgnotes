@@ -4,12 +4,12 @@ import _ from 'underscore';
 const apiUrl = config.serverUrl + "";
 const PAGE_LIMIT = 10;
 
-var apiCall = function (requestedModel) {
+var apiCall = function () {
   var PAGE_LIMIT = PAGE_LIMIT;
   var SKIP_START = 0;
   var data = {};
   var otherOptions = {};
-  var model = requestedModel || "widget";
+  var model = "widget";
   var redux = "WIDGET";
   var company = "";
   var apiCallClass = function (options) {
