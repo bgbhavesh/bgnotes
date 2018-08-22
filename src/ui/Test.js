@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import widgetActionCreators from './actions/widget-actions';
+import baseActionCreators from './actions/widget-actions';
 import List from './components/list';
 import SearchInput from './components/SearchInput';
 import apiCall from "../ui/actions/base-actions"
@@ -20,8 +20,6 @@ class Test extends React.Component {
 
     componentDidMount() {
         const { widgetActions } = this.props;
-        var x = widgetApi.getItems();
-        console.log(x)
         // widgetActions.getWidgets();
     }
 
@@ -44,7 +42,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        widgetActions: bindActionCreators(widgetActionCreators, dispatch)
+        widgetActions: bindActionCreators(baseActionCreators, dispatch)
     }
 }
 
