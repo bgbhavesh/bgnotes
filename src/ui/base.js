@@ -9,9 +9,10 @@ var baseObj = {
     model:"products",
     redux:"GET_PRODUCTS",
     data:{},
-    uid:null,
-    caseSensetive:false,
-    searchText:""
+    uid: null,
+    caseSensetive: false,
+    searchText:"",
+    searchFields:["description","name"],
 }
 class base extends React.Component {
     constructor(props) {
