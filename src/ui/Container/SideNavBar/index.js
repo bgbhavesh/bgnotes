@@ -12,6 +12,7 @@ const MySideNav = () => (
         <ListGroup>
             <ListGroupItem href="/">Home</ListGroupItem>
             <ListGroupItem href="/app">App</ListGroupItem>
+            <ListGroupItem href="/base">Base</ListGroupItem>
             {/* <ListGroupItem onClick={alert('hi')}>Trigger an alert</ListGroupItem> */}
         </ListGroup>
     </div>
