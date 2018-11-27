@@ -10,7 +10,7 @@ const apiUrl = config.serverUrl + "/api/common";
 //   },
 //   uid:"",
 //   searchText:""
-//   caseSensetive:false
+//   caseSensitive:false
 // }
 function getItems(baseObj) {
   console.log(baseObj)
@@ -18,14 +18,14 @@ function getItems(baseObj) {
     axios({
       method: "post",
       url: apiUrl,
-      data: {       
+      data: {
         type: baseObj.redux || 'GET_WIDGETS',
-        options:baseObj
+        options: baseObj
       }
     })
       .then(function (response) {
         // console.log(response.data)
-        if(response.success === false){
+        if (response.success === false) {
           return response;
         }
         return dispatch({
@@ -47,7 +47,7 @@ function updateitem(baseObj) {
         url: apiUrl + "/update",
         data: {
           model: baseObj.model, //||'widgets',
-          options:baseObj
+          options: baseObj
         }
       })
         .then(function (response) {
@@ -55,7 +55,7 @@ function updateitem(baseObj) {
           return dispatch({
             type: baseObj.redux || 'UPDATE_WIDGETS',
             payload: response.data,
-            options:baseObj
+            options: baseObj
           });
         })
         .catch(function (error) {
@@ -75,7 +75,7 @@ function createItem(baseObj) {
         url: apiUrl + "/add",
         data: {
           model: baseObj.model, //|| 'widgets'
-          options:baseObj
+          options: baseObj
         }
       })
         .then(function (response) {
@@ -100,7 +100,7 @@ function deleteItem(baseObj) {
       data: {
         uid: baseObj.uid,
         model: baseObj.model, //|| 'widgets'
-        options:baseObj
+        options: baseObj
       }
     })
       .then(function (response) {

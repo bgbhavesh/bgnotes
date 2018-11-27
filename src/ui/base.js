@@ -6,13 +6,13 @@ import baseActionCreators from './actions/base-actions';
 import List from './components/list';
 import SearchInput from './components/SearchInput';
 var baseObj = {
-    model:"products",
-    redux:"GET_PRODUCTS",
-    data:{},
+    model: "products",
+    redux: "GET_PRODUCTS",
+    data: {},
     uid: null,
-    caseSensetive: false,
-    searchText:"",
-    searchFields:["description","name"],
+    caseSensitive: false,
+    searchText: "",
+    searchFields: ["description", "name"],
 }
 class base extends React.Component {
     constructor(props) {
@@ -126,7 +126,7 @@ class base extends React.Component {
                         </div>
                     </div>
                 </div>
-            
+
 
             </div>
         )

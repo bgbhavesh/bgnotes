@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import LeoMain from "./LeoMain"
 import baseActionCreators from "../../actions/base-actions"; //'./actions/base-actions';
 var baseObj = {
-    model:"products",
-    redux:"GET_PRODUCTS",
-    data:{},
+    model: "products",
+    redux: "GET_PRODUCTS",
+    data: {},
     uid: null,
-    caseSensetive: false,
-    searchText:"",
-    searchFields:["description","name"],
+    caseSensitive: false,
+    searchText: "",
+    searchFields: ["description", "name"],
 }
 class LeoLeftSideBar extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class LeoLeftSideBar extends React.Component {
 
         baseActions.getItems(baseObj);
     }
-   
+
     render() {
         // const { products } = this.props;
         // console.log('app')

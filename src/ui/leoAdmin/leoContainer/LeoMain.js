@@ -6,13 +6,13 @@ import LeoFooter from "../leoComponent/leoLayout/LeoFooter";
 import LeoHeader from "../leoComponent/leoLayout/LeoHeader";
 import baseActionCreators from "../../actions/base-actions"; //'./actions/base-actions';
 var baseObj = {
-    model:"products",
-    redux:"GET_PRODUCTS",
-    data:{},
+    model: "products",
+    redux: "GET_PRODUCTS",
+    data: {},
     uid: null,
-    caseSensetive: false,
-    searchText:"",
-    searchFields:["description","name"],
+    caseSensitive: false,
+    searchText: "",
+    searchFields: ["description", "name"],
 }
 class LeoMain extends React.Component {
     constructor(props) {
@@ -24,15 +24,15 @@ class LeoMain extends React.Component {
 
         baseActions.getItems(baseObj);
     }
-   
+
     render() {
         // const { products } = this.props;
         // console.log('app')
         return (
             <div className=''>
-            <LeoHeader/>
-            <LeoLeftSideBar/>
-            <LeoFooter/>
+                <LeoHeader />
+                <LeoLeftSideBar />
+                <LeoFooter />
             </div>
         )
     }
