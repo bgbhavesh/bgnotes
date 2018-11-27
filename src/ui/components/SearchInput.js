@@ -15,12 +15,7 @@ export default class SearchInput extends Component {
                             placeholder="Search"
                             onKeyUp={e => {
                                 var text = e.target.value.trim();
-                                if (text && text !== '') {
-                                    this.props.searchItems(e, text)
-                                }
-                                else {
-                                    this.props.getAllData();
-                                }
+                                this.props.searchItems(e, text)
                             }}
                         />
 

@@ -8,6 +8,7 @@
     "react-scripts": "^1.0.2"
   },
   "dependencies": {
+    "history": "^4.6.3",
     "axios": "^0.18.0",
     "facebook-login-redux-react": "^1.1.0",
     "prop-types": "^15.5.10",
